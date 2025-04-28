@@ -17,6 +17,8 @@ public class App {
         queue.enqueue(puppy);
         queue.enqueue(turtle);
         queue.enqueue(monkey);
+
+        queue.enqueue(new Monkey());
         
         // The size of the queue should equal three since there are three objects in it
         queue.size();
@@ -24,10 +26,12 @@ public class App {
         // The first dequeue should return the puppy
         queue.dequeue();
         
-        // The second dequeue should return the kitty
+        // The second dequeue should return the turtle
         queue.dequeue();
         
-        // The first dequeue should return the pygmy marmoset
+        // The first dequeue should return the monkey
+        queue.dequeue();
+
         queue.dequeue();
         }
 }
