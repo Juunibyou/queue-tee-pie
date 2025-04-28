@@ -6,5 +6,60 @@ package org.example;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.junit.jupiter.api.BeforeEach;
+
 class AppTest {
+
+    private QueueTees queue;
+    private Cutie puppy;
+    private Cutie monkey;
+    private Cutie turtle;
+
+    @BeforeEach
+    void setup(){
+        queue = new QueueTees(3);
+        puppy = new Puppy();
+        monkey = new Monkey();
+        turtle = new Turtle();
+    }
+
+    @Test
+    void testEnqueue(){
+        queue.enqueue(puppy);
+        assertEquals(1, queue.size());
+
+        queue.enqueue(monkey);
+        assertEquals(2, queue.size());
+
+        queue.enqueue(turtle);
+        assertEquals(3, queue.size());
+    }
+
+    @Test
+    void testDequeue(){
+        queue.enqueue(monkey);
+        queue.enqueue(puppy);
+
+        queue.dequeue();
+        queue.dequeue();
+
+        assertEquals(0, queue.size());
+
+    }
+
+    @Test
+    void testEmpty(){
+        assertNull(queue.dequeue());
+    }
+
+    @Test 
+    void testFull(){
+        queue.enqueue(monkey);
+        queue.enqueue(puppy);
+        queue.enqueue(turtle);
+
+        queue.enqueue(new Monkey());
+
+        assertEquals(3, queue.size());
+    }
 }
