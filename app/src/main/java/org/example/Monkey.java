@@ -1,6 +1,6 @@
-package org;
+package org.example;
 
-public class Monkey {
+public class Monkey implements Cutie {
     public String description(){
         return "A funny looking monkey with great humor.";
     }
